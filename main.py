@@ -8,7 +8,7 @@ from aiogram.client.default import DefaultBotProperties
 from apps.utils.commands import set_my_commands
 from core.config import TOKEN, DEVELOPER
 from apps.middlewares.db_session import DbSessionMiddleware
-from apps.routers import register
+from apps.routers import register, start
 
 
 async def startup(bot: Bot):
@@ -23,9 +23,10 @@ async def shutdown(bot: Bot):
 async def main():
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode='HTML'))
     dp = Dispatcher()
+    dp.include_router(router=start.router)
     dp.include_router(router=register.router)
 
-    dp.message.middleware.register(DbSessionMiddleware)
+    dp.message.middleware.register(DbSessionMiddleware())
 
 
     dp.startup.register(startup)

@@ -20,7 +20,7 @@ async def register(data: dict, session: AsyncSession):
     try:
         user = User(
             username=data.get("username"),
-            full_name=data.get("full_name"),
+            full_name=data.get("name"),
             chat_id=data.get("chat_id"),
             language=data.get("language"),
             phone_number=data.get("phone_number")
