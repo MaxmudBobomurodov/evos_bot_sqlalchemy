@@ -45,3 +45,9 @@ user_menu_keyboard = ReplyKeyboardMarkup(keyboard=[
 ],
     resize_keyboard=True,
     is_persistent=True)
+
+location_share = ReplyKeyboardMarkup(
+    keyboard=[[
+        KeyboardButton(text="Share location 🌏", request_location=True)
+    ]], resize_keyboard=True, one_time_keyboard=True
+)

@@ -18,9 +18,9 @@ async def send_feedback(message: types.Message, state: FSMContext):
 
 @router.message(Feedback.feedback)
 async def get_feedback(message: types.Message, state: FSMContext, bot: Bot, session: AsyncSession):
-    user = get_user(chat_id=message.chat.id, session=session)
+    user = await get_user(chat_id=message.chat.id, session=session)
     feedback = f"""
-User: {message.from_user.mention_html(f'{user[1]}')}
+User: {message.from_user.mention_html(f'{user.full_name}')}
 Feedback: {message.text}
     """
     await bot.send_message(text=feedback, chat_id=DEVELOPER)

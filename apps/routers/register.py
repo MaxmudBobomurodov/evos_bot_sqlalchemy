@@ -3,7 +3,7 @@ from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.states.user import RegisterState
-from apps.keyboards.default.user import user_phone_keyboard, user_main_keyboard
+from apps.keyboards.default.user import user_phone_keyboard, user_main_keyboard, location_share
 from apps.db_queries.user import register
 
 
@@ -25,8 +25,15 @@ async def get_phone_number(message: types.Message, state: FSMContext):
     await state.set_state(RegisterState.name)
 
 @router.message(RegisterState.name)
-async def get_user_name(message: types.Message, state: FSMContext, session : AsyncSession):
+async def get_user_name(message: types.Message, state: FSMContext):
     await state.update_data(name=message.text)
+
+    await message.answer("please , share your location", reply_markup=location_share)
+    await state.set_state(RegisterState.location)
+
+@router.message(RegisterState.location)
+async def get_location(message: types.Message, state: FSMContext, session : AsyncSession):
+    await state.update_data(location=message.location)
 
     data = await state.get_data()
     data['chat_id'] = message.from_user.id

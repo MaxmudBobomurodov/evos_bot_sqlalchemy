@@ -5,6 +5,7 @@ class RegisterState(StatesGroup):
     language = State()
     phone_number = State()
     name = State()
+    location = State()
 
 
 
