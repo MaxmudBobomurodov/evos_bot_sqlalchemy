@@ -1,0 +1,132 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-06-26 16:43+0500\n"
+"PO-Revision-Date: 2025-06-25 17:32+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: apps/keyboards/default/admin.py:8
+msgid "Products 🍴"
+msgstr ""
+
+#: apps/keyboards/default/admin.py:9
+msgid "Categories 🍴"
+msgstr ""
+
+#: apps/keyboards/default/admin.py:12
+msgid "Users 👯"
+msgstr ""
+
+#: apps/keyboards/default/admin.py:13
+msgid "Orders 📝"
+msgstr ""
+
+#: apps/keyboards/default/admin.py:16
+msgid "Statistics 📊"
+msgstr ""
+
+#: apps/keyboards/default/admin.py:17
+msgid "Settings ⚙️"
+msgstr ""
+
+#: apps/keyboards/default/user.py:6
+msgid "share phone number ☎️"
+msgstr ""
+
+#: apps/keyboards/default/user.py:14
+msgid "Menu🍴"
+msgstr ""
+
+#: apps/keyboards/default/user.py:18
+msgid "My Orders📋"
+msgstr ""
+
+#: apps/keyboards/default/user.py:21
+msgid "Basket📥"
+msgstr ""
+
+#: apps/keyboards/default/user.py:24
+msgid "Send feedback ✍️"
+msgstr ""
+
+#: apps/keyboards/default/user.py:25
+msgid "settings⚙️"
+msgstr ""
+
+#: apps/keyboards/default/user.py:36
+msgid "Sets"
+msgstr ""
+
+#: apps/keyboards/default/user.py:39
+msgid "Lavash"
+msgstr ""
+
+#: apps/keyboards/default/user.py:40
+msgid "burger"
+msgstr ""
+
+#: apps/keyboards/default/user.py:43
+msgid "Back🔙"
+msgstr ""
+
+#: apps/keyboards/default/user.py:53
+msgid "Share location 🌏"
+msgstr ""
+
+#: apps/middlewares/subscription.py:32
+msgid "Please subscribe this channels \n"
+msgstr ""
+
+#: apps/routers/feedback.py:14
+msgid "Please enter your feedback"
+msgstr ""
+
+#: apps/routers/feedback.py:16
+msgid "send your feedback:"
+msgstr ""
+
+#: apps/routers/feedback.py:30
+msgid "Your feedback is sent successfully ✅"
+msgstr ""
+
+#: apps/routers/register.py:17
+msgid "Please, share your phone number ☎️"
+msgstr ""
+
+#: apps/routers/register.py:28
+msgid "Please, Enter your fullname✍️"
+msgstr ""
+
+#: apps/routers/register.py:37
+msgid "please , share your location"
+msgstr ""
+
+#: apps/routers/register.py:48
+msgid "you have successfully registered🎉"
+msgstr ""
+
+#: apps/routers/register.py:50
+msgid "Please try again later, something went wrong 😔"
+msgstr ""
+
+#: apps/routers/start.py:26
+msgid "Assalomu alaykum, admin 🫡"
+msgstr ""
+
+#: apps/routers/start.py:38
+msgid "Assalomu alaykum, welcome back"
+msgstr ""
+

@@ -14,7 +14,20 @@ DB_PORT = os.getenv("DB_PORT")
 
 TOKEN = os.getenv("TOKEN")
 DEVELOPER = 5894214924
-ADMINS = []
+ADMINS = [5894214924]
+
+
+CHANNELS = [
+    {
+        "name" : "Channel 1",
+        "link" : "https://t.me/+AyDEusSfUrA5ZjMy",
+        "chat_id": -1002356666639
+    }
+]
+
+
+I18N_DOMAIN = 'lang'
+LOCALES_DIR = 'locale'
 
 DB_CONFIG = {
     "database": DB_NAME,

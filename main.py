@@ -1,14 +1,15 @@
 import logging
 from asyncio import run
 
-from aiogram import Bot, Dispatcher
-from aiogram.client.default import DefaultBotProperties
+from aiogram import Bot
 
-
+from apps.middlewares.subscription import SubscribeMiddleware
 from apps.utils.commands import set_my_commands
-from core.config import TOKEN, DEVELOPER
+from core.config import DEVELOPER
 from apps.middlewares.db_session import DbSessionMiddleware
+from apps.middlewares.language import LanguageMiddleware
 from apps.routers import register, start, feedback
+from loader import bot, dp, i18n
 
 
 async def startup(bot: Bot):
@@ -21,15 +22,13 @@ async def shutdown(bot: Bot):
 
 
 async def main():
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode='HTML'))
-    dp = Dispatcher()
     dp.include_router(router=start.router)
     dp.include_router(router=register.router)
     dp.include_router(router=feedback.router)
 
     dp.message.middleware.register(DbSessionMiddleware())
-
-
+    dp.message.middleware.register(LanguageMiddleware(i18n=i18n))
+    dp.message.middleware.register(SubscribeMiddleware())
     dp.startup.register(startup)
     dp.shutdown.register(shutdown)
 
@@ -40,7 +39,7 @@ if __name__ == '__main__':
     logging.basicConfig(
         format="[%(asctime)s] - %(levelname)s - %(name)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        level=logging.INFO
+        level=logging.ERROR
     )
     logging.getLogger("aiogram.event").setLevel(logging.WARNING)
     run(main())
