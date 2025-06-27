@@ -41,5 +41,5 @@ if __name__ == '__main__':
         datefmt="%Y-%m-%d %H:%M:%S",
         level=logging.ERROR
     )
-    logging.getLogger("aiogram.event").setLevel(logging.WARNING)
+    logging.getLogger("aiogram.event").setLevel(logging.ERROR)
     run(main())
