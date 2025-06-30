@@ -7,3 +7,24 @@ pybabel compile -d locale -D lang
 pybabel extract . -o locale/lang.pot
 pybabel update -d locale -D lang -i locale/lang.pot
 pybabel compile -d locale -D lang
+
+
+
+[Unit]
+Description=Aiogram Telegram Bot
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/var/www/bots/evos_bot_sqlalchemy
+ExecStart=/var/www/bots/evos_bot_sqlalchemy/venv/bin/python3 main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+
+
+
