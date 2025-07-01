@@ -4,6 +4,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.db_queries.category import get_categories
+from apps.db_queries.product import get_product
 from apps.db_queries.user import get_user
 from core.models import Category, Product
 from loader import _
@@ -56,7 +57,7 @@ async def admin_product_keyboard(session: AsyncSession, chat_id: int):
     user = await get_user(session=session, chat_id=chat_id)
     lang = user.language or "en"
 
-    products: Sequence[Product] = await get_categories(session=session) or []
+    products: Sequence[Product] = await get_product(session=session) or []
     keyboard = [
         [
             KeyboardButton(text=_("Add product🍴")),

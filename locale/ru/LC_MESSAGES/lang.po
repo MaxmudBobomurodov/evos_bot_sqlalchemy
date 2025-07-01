@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-26 16:43+0500\n"
+"POT-Creation-Date: 2025-07-01 18:21+0500\n"
 "PO-Revision-Date: 2025-06-25 17:32+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -19,32 +19,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: apps/keyboards/default/admin.py:8
+#: apps/keyboards/default/admin.py:16
 msgid "Products 🍴"
 msgstr "Продукция 🍴"
 
-#: apps/keyboards/default/admin.py:9
+#: apps/keyboards/default/admin.py:17
 msgid "Categories 🍴"
 msgstr "Категории 🍴"
 
-#: apps/keyboards/default/admin.py:12
+#: apps/keyboards/default/admin.py:20
 msgid "Users 👯"
 msgstr "Пользователи 👯"
 
-#: apps/keyboards/default/admin.py:13
+#: apps/keyboards/default/admin.py:21
 msgid "Orders 📝"
 msgstr "Заказы 📝"
 
-#: apps/keyboards/default/admin.py:16
+#: apps/keyboards/default/admin.py:24
 msgid "Statistics 📊"
 msgstr "Статистика 📊"
 
-#: apps/keyboards/default/admin.py:17
+#: apps/keyboards/default/admin.py:25
 msgid "Settings ⚙️"
 msgstr "Настройки ⚙️"
 
-#: apps/keyboards/default/user.py:6
+#: apps/keyboards/default/admin.py:37
+msgid "Add category 🍴"
+msgstr "Добавить категорию 🍴"
 
+#: apps/keyboards/default/admin.py:38 apps/keyboards/default/admin.py:64
+msgid "Back ⬅️"
+msgstr "Назад🔙"
+
+#: apps/keyboards/default/admin.py:63
+msgid "Add product🍴"
+msgstr "Добавить продукт🍴"
+
+#: apps/keyboards/default/user.py:6
 msgid "share phone number ☎️"
 msgstr "Пожалуйста, поделитесь своим номером телефона ☎️"
 
@@ -85,7 +96,6 @@ msgid "Back🔙"
 msgstr "Назад🔙"
 
 #: apps/keyboards/default/user.py:53
-
 msgid "Share location 🌏"
 msgstr "Пожалуйста, поделитесь своим местоположением📍"
 
@@ -94,12 +104,10 @@ msgid "Please subscribe this channels \n"
 msgstr "Пожалуйста, подпишитесь на этот канал \n"
 
 #: apps/routers/feedback.py:14
-
 msgid "Please enter your feedback"
 msgstr "Пожалуйста, оставьте свой отзыв"
 
 #: apps/routers/feedback.py:16
-
 msgid "send your feedback:"
 msgstr "Пожалуйста, оставьте свой отзыв✍️:"
 
@@ -134,4 +142,12 @@ msgstr "ассалом, админ 🫡"
 #: apps/routers/start.py:38
 msgid "Assalomu alaykum, welcome back"
 msgstr "Ассалому алейкум, добро пожаловать обратно 🫡"
+
+#: apps/routers/admin/category.py:56
+msgid "Category is added"
+msgstr "Категория добавлена"
+
+#: apps/routers/admin/category.py:58
+msgid "Something went wrong, please try again later"
+msgstr "Что-то пошло не так, попробуйте еще раз позже"
 

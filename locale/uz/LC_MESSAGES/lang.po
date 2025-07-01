@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-26 16:43+0500\n"
+"POT-Creation-Date: 2025-07-01 18:21+0500\n"
 "PO-Revision-Date: 2025-06-25 17:31+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
@@ -18,29 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: apps/keyboards/default/admin.py:8
+#: apps/keyboards/default/admin.py:16
 msgid "Products 🍴"
 msgstr "Mahsulotlar 🍴"
 
-#: apps/keyboards/default/admin.py:9
+#: apps/keyboards/default/admin.py:17
 msgid "Categories 🍴"
 msgstr "Kategoriyalar 🍴"
 
-#: apps/keyboards/default/admin.py:12
+#: apps/keyboards/default/admin.py:20
 msgid "Users 👯"
 msgstr "Foydalanuvchilar 👯"
 
-#: apps/keyboards/default/admin.py:13
+#: apps/keyboards/default/admin.py:21
 msgid "Orders 📝"
 msgstr "Buyurtmalar 📝"
 
-#: apps/keyboards/default/admin.py:16
+#: apps/keyboards/default/admin.py:24
 msgid "Statistics 📊"
 msgstr "Statistikalar 📊"
 
-#: apps/keyboards/default/admin.py:17
+#: apps/keyboards/default/admin.py:25
 msgid "Settings ⚙️"
 msgstr "Sozlamalar ⚙️"
+
+#: apps/keyboards/default/admin.py:37
+msgid "Add category 🍴"
+msgstr "Kategoriya qo'shish 🍴"
+
+#: apps/keyboards/default/admin.py:38 apps/keyboards/default/admin.py:64
+msgid "Back ⬅️"
+msgstr "Ortga🔙"
+
+#: apps/keyboards/default/admin.py:63
+msgid "Add product🍴"
+msgstr "Mahsulot qo'shish🍴"
 
 #: apps/keyboards/default/user.py:6
 msgid "share phone number ☎️"
@@ -83,7 +95,6 @@ msgid "Back🔙"
 msgstr "Ortga🔙"
 
 #: apps/keyboards/default/user.py:53
-
 msgid "Share location 🌏"
 msgstr "Iltimos, joylashuvingizni baham ko'ring📍"
 
@@ -130,4 +141,12 @@ msgstr "admin aka assalom 🫡"
 #: apps/routers/start.py:38
 msgid "Assalomu alaykum, welcome back"
 msgstr "Assalomu alaykum xush kelibsiz🫡"
+
+#: apps/routers/admin/category.py:56
+msgid "Category is added"
+msgstr "kategoriya qo'shildi"
+
+#: apps/routers/admin/category.py:58
+msgid "Something went wrong, please try again later"
+msgstr "Nimadir xato ketdi, iltimos keyinroq qayta urining"
 
