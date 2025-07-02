@@ -8,12 +8,20 @@ from core.models import Product
 async def add_product(session: AsyncSession, data: dict):
     try:
         product = Product(
-            name=data['name'],
-            about=data['about'],
-            price=data['price'],
-            image=data['image'],
-            category_id=data['category_id'],
-        )
+    name={
+        "uz": data['name_uz'],
+        "ru": data['name_ru'],
+        "en": data['name_en']
+    },
+    about={
+        "uz": data['about_uz'],
+        "ru": data['about_ru'],
+        "en": data['about_en']
+    },
+    price=data['price'],
+    image=data['image'],
+    category_id=data['category_id']
+)
         session.add(product)
         await session.commit()
         await session.refresh(product)

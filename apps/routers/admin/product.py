@@ -16,7 +16,7 @@ async def admin_category_handler(message: types.Message, session: AsyncSession):
     reply_markup=await admin_product_keyboard(session=session, chat_id=message.chat.id))
 
 
-@router.message(IsAdmin(), F.text.in_(["Add product🍴","Mahsulot qo'shish🍴","Добавить категорию 🍴"]))
+@router.message(IsAdmin(), F.text.in_(["Add product🍴","Mahsulot qo'shish🍴","Добавить продукт🍴"]))
 async def add_category_handler(message: types.Message, state: FSMContext):
     text = "Enter product name in uzbek"
     await message.answer(text=text,
@@ -39,43 +39,48 @@ async def add_category_handler(message: types.Message, state: FSMContext):
     reply_markup=ReplyKeyboardRemove())
     await state.set_state(ProductAdd.name_en)
 
-@router.message(ProductAdd.name_en)
+@router.message(IsAdmin(),ProductAdd.name_en)
 async def get_name_en(message: types.Message, state: FSMContext):
     await state.update_data(name_en=message.text)
     await message.answer("Enter product description in Uzbek:")
     await state.set_state(ProductAdd.about_uz)
 
-@router.message(ProductAdd.about_uz)
+@router.message(IsAdmin(),ProductAdd.about_uz)
 async def get_about_uz(message: types.Message, state: FSMContext):
     await state.update_data(about_uz=message.text)
     await message.answer("Enter product description in Russian:")
     await state.set_state(ProductAdd.about_ru)
 
-@router.message(ProductAdd.about_ru)
+@router.message(IsAdmin(),ProductAdd.about_ru)
 async def get_about_ru(message: types.Message, state: FSMContext):
     await state.update_data(about_ru=message.text)
     await message.answer("Enter product description in English:")
     await state.set_state(ProductAdd.about_en)
 
-@router.message(ProductAdd.about_en)
+@router.message(IsAdmin(),ProductAdd.about_en)
 async def get_about_en(message: types.Message, state: FSMContext):
     await state.update_data(about_en=message.text)
     await message.answer("Enter product price:")
     await state.set_state(ProductAdd.price)
 
-@router.message(ProductAdd.price)
+@router.message(IsAdmin(),ProductAdd.price)
 async def get_price(message: types.Message, state: FSMContext):
     await state.update_data(price=int(message.text))
     await message.answer("Send product image URL:")
     await state.set_state(ProductAdd.image)
 
-@router.message(ProductAdd.image)
+@router.message(IsAdmin(),ProductAdd.image)
 async def get_image(message: types.Message, state: FSMContext):
-    await state.update_data(image=message.text)
+    if message.photo:
+        photo = message.photo[-1]
+        file_id = photo.file_id
+        await state.update_data(image=file_id)
+    elif message.text:
+        await state.update_data(image=message.text)
     await message.answer("Enter category ID:")
     await state.set_state(ProductAdd.category_id)
 
-@router.message(ProductAdd.category_id)
+@router.message(IsAdmin(),ProductAdd.category_id)
 async def get_category_id(message: types.Message, state: FSMContext, session: AsyncSession):
     await state.update_data(category_id=int(message.text))
     data = await state.get_data()
