@@ -23,14 +23,21 @@ async def shutdown(bot: Bot):
 
 async def main():
     dp.include_router(router=start.router)
-    dp.include_router(router=register.router)
-    dp.include_router(router=feedback.router)
-    dp.include_router(router=category.router)
+
+
+    # admin routers
     dp.include_router(router=backs.router)
     dp.include_router(router=product.router)
+    dp.include_router(router=category.router)
+
+    # user routers
+
+    dp.include_router(router=register.router)
+    dp.include_router(router=feedback.router)
 
 
     dp.message.middleware.register(DbSessionMiddleware())
+    dp.callback_query.middleware.register(DbSessionMiddleware())
     dp.message.middleware.register(LanguageMiddleware(i18n=i18n))
     dp.message.middleware.register(SubscribeMiddleware())
     dp.startup.register(startup)

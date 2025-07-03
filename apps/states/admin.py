@@ -9,6 +9,8 @@ class CategoryAdd(StatesGroup):
 
 
 class ProductAdd(StatesGroup):
+    category = State()
+
     name_uz = State()
     name_ru = State()
     name_en = State()
@@ -19,4 +21,13 @@ class ProductAdd(StatesGroup):
 
     price = State()
     image = State()
-    category_id = State()
+
+class AdminMainMenu(StatesGroup):
+    category = State()
+    product = State()
+
+
+class CategoryUpdate(StatesGroup):
+    name_uz = State()
+    name_ru = State()
+    name_en = State()

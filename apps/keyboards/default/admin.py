@@ -31,7 +31,7 @@ async def admin_category_keyboard(session: AsyncSession, chat_id: int):
     user = await get_user(session=session, chat_id=chat_id)
     lang = user.language or "en"
 
-    categories: Sequence[Category] = await get_categories(session=session) or []
+    categories: Sequence[Category] = await get_categories(session=session)
     keyboard = [
         [
             KeyboardButton(text=_("Add category 🍴")),
