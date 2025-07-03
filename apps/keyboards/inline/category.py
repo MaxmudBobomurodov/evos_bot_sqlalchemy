@@ -45,7 +45,6 @@ async def admin_category_detail_keyboard(category):
     ]])
 
 async def admin_category_update_keyboard(category):
-    print("✅ admin_category_update_keyboard chaqirildi")  # DEBUG
 
     return InlineKeyboardMarkup(inline_keyboard=[
         [

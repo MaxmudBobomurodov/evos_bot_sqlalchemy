@@ -1,14 +1,13 @@
-from ast import increment_lineno
-
 from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardRemove, CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
-
-from apps.db_queries.product import add_product
+from loader import _
+from apps.db_queries.product import add_product, get_product_by_name
 from apps.keyboards.default.admin import admin_product_keyboard
 from apps.filters.is_admin import IsAdmin
 from apps.keyboards.inline.category import admin_category_inline_keyboard
+from apps.keyboards.inline.product import admin_product_detail_keyboard, ProductDetail
 from apps.states.admin import ProductAdd, AdminMainMenu
 
 router = Router()
@@ -111,4 +110,4 @@ async def get_image(message: types.Message, state: FSMContext, session : AsyncSe
     else:
         await message.answer("❌ Error adding product.",reply_markup=await admin_product_keyboard(session=session, chat_id=message.chat.id))
 
-    await state.clear()
+    await state.set_state(AdminMainMenu.product)

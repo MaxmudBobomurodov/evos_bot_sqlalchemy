@@ -31,3 +31,13 @@ class CategoryUpdate(StatesGroup):
     name_uz = State()
     name_ru = State()
     name_en = State()
+
+class ProductUpdate(StatesGroup):
+    name_uz = State()
+    name_ru = State()
+    name_en = State()
+
+class ProductUpdateAbout(StatesGroup):
+    about_uz = State()
+    about_ru = State()
+    about_en = State()

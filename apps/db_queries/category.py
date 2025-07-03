@@ -76,7 +76,6 @@ async def update_category(session: AsyncSession, category_id: int, data: dict):
         await session.commit()
 
         if result.rowcount == 0:
-            # Hech qanday qator o‘zgartirilmadi
             logging.warning(f"No category found with id={category_id} to update.")
             return False
 
