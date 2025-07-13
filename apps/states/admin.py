@@ -41,3 +41,6 @@ class ProductUpdateAbout(StatesGroup):
     about_uz = State()
     about_ru = State()
     about_en = State()
+
+class ProductUpdatePrice(StatesGroup):
+    price = State()

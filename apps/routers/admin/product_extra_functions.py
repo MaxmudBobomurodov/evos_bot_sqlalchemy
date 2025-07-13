@@ -6,12 +6,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import ReplyKeyboardRemove
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.db_queries.product import update_product_about, get_product_by_id
+from apps.db_queries.product import update_product_about, get_product_by_id, update_product_price
 from apps.filters.is_admin import IsAdmin
 from apps.keyboards.default.admin import admin_product_keyboard
 from apps.keyboards.inline.product import ProductDetail
-from apps.states.admin import AdminMainMenu, ProductUpdateAbout
-from core.models import Product
+from apps.states.admin import AdminMainMenu, ProductUpdateAbout, ProductUpdatePrice
 from loader import _
 
 router = Router()
@@ -89,3 +88,32 @@ async def admin_product_update_about(
                              session=session,chat_id=message.chat.id
                          ))
     await state.set_state(AdminMainMenu.product)
+
+
+@router.callback_query(IsAdmin(), ProductDetail.filter(F.act=="update_price"))
+async def update_price(
+        callback: types.CallbackQuery,
+        state: FSMContext
+):
+    data = ProductDetail.unpack(callback.data)
+    await state.update_data(product_id=data.product_id)
+    text = _("Enter new product price 💸")
+    await callback.message.answer(text=text)
+    await state.set_state(ProductUpdatePrice.price)
+
+
+@router.message(IsAdmin(), ProductUpdatePrice.price)
+async def save_new_price(message: types.Message,
+                         state: FSMContext,
+                         session: AsyncSession):
+    await state.update_data(price=message.text)
+    data = await state.get_data()
+    product_id = data.get("product_id")
+    print(f"➡️ Updating price for product_id={product_id}")
+    text = _("New price successfully updated ✅")
+    result = await update_product_price(session=session, product_id=product_id, data=data)
+    if result:
+        await message.answer(text=text,reply_markup=await admin_product_keyboard(session=session, chat_id=message.chat.id))
+    else:
+        await message.answer(text=_("can not update the price❌"),reply_markup=await admin_product_keyboard(session=session, chat_id=message.chat.id))
+    await state.clear()

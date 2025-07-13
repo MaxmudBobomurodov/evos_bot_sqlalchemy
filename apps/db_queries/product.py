@@ -121,3 +121,23 @@ async def update_product_about(
         logging.error(e)
         await session.rollback()
         return False
+
+async def update_product_price(session: AsyncSession, product_id: int, data: dict):
+    try:
+        price = float(data['price'])
+        product = update(Product).where(Product.id == product_id).values(
+            price=price
+        )
+        result = await session.execute(product)
+        await session.commit()
+
+        print(f"🔁 rowcount: {result.rowcount}")
+
+        if result.rowcount == 0:
+            logging.warning(f"No product found with id={product_id} to update.")
+            return False
+        return True
+    except Exception as e:
+        logging.error(e)
+        await session.rollback()
+        return False

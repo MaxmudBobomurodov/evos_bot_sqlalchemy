@@ -1,4 +1,8 @@
-from aiogram.types import KeyboardButton , ReplyKeyboardMarkup
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from core.models import Product
 from loader import _
 async def user_phone_keyboard(locale=None):
     return ReplyKeyboardMarkup(keyboard=[
@@ -57,3 +61,22 @@ languages = ReplyKeyboardMarkup(
     resize_keyboard=True,
     is_persistent=True
 )
+
+async def user_product_menu(session: AsyncSession):
+    stmt = select(Product).order_by(Product.id)
+    result = await session.execute(stmt)
+    products = result.scalars().all()
+
+    if not products:
+        return None
+
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text=f"{product.name} — {product.price} so'm",
+                callback_data=f"product:{product.id}"
+            )]
+            for product in products
+        ]
+    )
+    return keyboard

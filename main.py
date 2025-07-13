@@ -10,7 +10,7 @@ from apps.middlewares.db_session import DbSessionMiddleware
 from apps.middlewares.language import LanguageMiddleware
 from apps.routers import register, start, feedback, backs, settings, user_menu
 from loader import bot, dp, i18n
-from apps.routers.admin import category, product, product_delete, product_extra_functions, users
+from apps.routers.admin import category, product, product_delete, product_extra_functions, users, admin_settings
 
 
 async def startup(bot: Bot):
@@ -33,6 +33,7 @@ async def main():
     dp.include_router(router=product_delete.router)
     dp.include_router(router=product_extra_functions.router)
     dp.include_router(router=users.router)
+    dp.include_router(router=admin_settings.router)
 
     # user routers
     dp.include_router(router=register.router)

@@ -92,3 +92,13 @@ async def user_settings_keyboard():
             ]
         ], resize_keyboard=True
     )
+
+async def admin_settings_keyboard():
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text=_("Change language ✍️")),
+                KeyboardButton(text=_("Back ⬅️"))
+            ]
+        ], resize_keyboard=True
+    )
