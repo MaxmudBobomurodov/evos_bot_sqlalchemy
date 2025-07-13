@@ -18,11 +18,8 @@ async def user_main_keyboard(locale=None):
         KeyboardButton(text=_("My Orders📋", locale=locale))
     ],
     [
-        KeyboardButton(text=_("Basket📥"),locale=locale)
-    ],
-    [
         KeyboardButton(text=_("Send feedback ✍️"),locale=locale),
-        KeyboardButton(text=_("settings⚙️"),locale=locale)
+        KeyboardButton(text=_("Settings ⚙️"),locale=locale)
     ]
 
     ],
@@ -30,17 +27,14 @@ async def user_main_keyboard(locale=None):
     is_persistent=True
     )
 
-async def user_menu_keyboard(locale=None):
+async def user_location_keyboard(locale=None):
     return ReplyKeyboardMarkup(keyboard=[
     [
-        KeyboardButton(text=_("Sets"),locale=locale)
+        KeyboardButton(text=_("My address 📍"),locale=locale),
+        KeyboardButton(text=_("Send address 📝"), locale=locale)
     ],
     [
-        KeyboardButton(text=_("Lavash"),locale=locale),
-        KeyboardButton(text=_("burger"),locale=locale)
-    ],
-    [
-        KeyboardButton(text=_("Back🔙"),locale=locale)
+        KeyboardButton(text=_("Back ⬅️"),locale=locale)
     ]
     ],
         resize_keyboard=True,
@@ -53,3 +47,13 @@ async def location_share_keyboard(locale=None):
         KeyboardButton(text=_("Share location 🌏",locale=locale), request_location=True)
     ]], resize_keyboard=True, one_time_keyboard=True
     )
+
+languages = ReplyKeyboardMarkup(
+    keyboard=[[
+        KeyboardButton(text="Uzbek 🇺🇿"),
+        KeyboardButton(text="Russian 🇷🇺"),
+        KeyboardButton(text="English 🇺🇸"),
+    ]],
+    resize_keyboard=True,
+    is_persistent=True
+)

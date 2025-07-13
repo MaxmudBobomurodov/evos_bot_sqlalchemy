@@ -39,7 +39,10 @@ async def get_user_name(message: types.Message, state: FSMContext):
 
 @router.message(RegisterState.location)
 async def get_location(message: types.Message, state: FSMContext, session : AsyncSession):
-    await state.update_data(location=message.location)
+    lat = message.location.latitude
+    lon = message.location.longitude
+
+    await state.update_data(latitude=lat, longitude=lon)
 
     data = await state.get_data()
     language = data.get("language")

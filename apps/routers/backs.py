@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.filters.is_admin import IsAdmin
 from apps.keyboards.default.admin import admin_main_menu_keyboard, admin_category_keyboard, admin_product_keyboard
+from apps.keyboards.default.user import user_main_keyboard
 from apps.keyboards.inline.category import CategoryDetail
 from apps.keyboards.inline.product import ProductDetail
 from apps.states.admin import AdminMainMenu, ProductAdd
@@ -44,3 +45,11 @@ async def product_back_handler(
             chat_id=callback.from_user.id
         )
     )
+
+@router.message(IsAdmin() ,F.text.in_(["Back ⬅️","Назад🔙","Ortga🔙"]))
+async def back_admin(message: types.Message):
+    await message.answer(text="Back ⬅️",reply_markup=await admin_main_menu_keyboard())
+
+@router.message(F.text.in_(["Back ⬅️","Назад🔙","Ortga🔙"]))
+async def back_user(message: types.Message):
+    await message.answer(text="Back ⬅️",reply_markup=await user_main_keyboard())

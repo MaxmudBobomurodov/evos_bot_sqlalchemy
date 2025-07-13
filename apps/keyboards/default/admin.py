@@ -14,15 +14,14 @@ async def admin_main_menu_keyboard():
         keyboard=[
             [
                 KeyboardButton(text=_("Products 🍴")),
-                KeyboardButton(text=_("Categories 🍴")),
+                KeyboardButton(text=_("Categories 🍴"))
             ],
             [
                 KeyboardButton(text=_("Users 👯")),
                 KeyboardButton(text=_("Orders 📝"))
             ],
             [
-                KeyboardButton(text=_("Statistics 📊")),
-                KeyboardButton(text=_("Settings ⚙️")),
+                KeyboardButton(text=_("Settings ⚙️"))
             ]
         ], resize_keyboard=True
     )
@@ -78,4 +77,18 @@ async def admin_product_keyboard(session: AsyncSession, chat_id: int):
     return ReplyKeyboardMarkup(
         keyboard=keyboard,
         resize_keyboard=True
+    )
+
+async def user_settings_keyboard():
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text=_("Change language ✍️")),
+                KeyboardButton(text=_("Back ⬅️"))
+            ],
+            [
+                KeyboardButton(text=_("Change location 📝")),
+                KeyboardButton(text=_("see recent location 📍"))
+            ]
+        ], resize_keyboard=True
     )

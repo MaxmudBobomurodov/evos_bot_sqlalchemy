@@ -17,6 +17,8 @@ class User(Base):
     chat_id: Mapped[int] = mapped_column(BigInteger, unique=True, index=True)
     phone_number: Mapped[str] = mapped_column(String, unique=True)
     language: Mapped[str] = mapped_column(String, default="en")
+    latitude: Mapped[float] = mapped_column(nullable=True)
+    longitude: Mapped[float] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

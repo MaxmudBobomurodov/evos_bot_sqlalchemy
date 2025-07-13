@@ -11,3 +11,6 @@ class RegisterState(StatesGroup):
 
 class Feedback(StatesGroup):
     feedback = State()
+
+class LocationState(StatesGroup):
+    location = State()
