@@ -1,7 +1,11 @@
+from typing import Sequence
+
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from apps.db_queries.product import get_product
+from apps.db_queries.user import get_user
 from core.models import Product
 from loader import _
 async def user_phone_keyboard(locale=None):
@@ -80,3 +84,4 @@ async def user_product_menu(session: AsyncSession):
         ]
     )
     return keyboard
+

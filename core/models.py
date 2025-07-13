@@ -48,3 +48,12 @@ class Product(Base):
     category: Mapped["Category"] = relationship(
         "Category", back_populates="products"
     )
+class Order(Base):
+    __tablename__ = "orders"
+    id: Mapped[int]= mapped_column(primary_key=True)
+    user_id: Mapped[int]= mapped_column(ForeignKey("users.id"))
+    product_id: Mapped[int]= mapped_column(ForeignKey("product.id"))
+    quantity: Mapped[int]= mapped_column(default=1)
+
+    user = relationship("User", backref="orders")
+    product = relationship("Product", backref="orders")
